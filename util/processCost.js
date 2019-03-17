@@ -17,7 +17,13 @@ module.exports = {
    * If the car has had no previous owners, add ten (10) percent to the FINAL car value at the end.
    */
   processOwnershipCost: function(owners, baseValue, finalValue) {
-    return owners > 2 ? (-1 * (baseValue * 25)) / 100 : (finalValue * 10) / 100;
+    if (owners > 2) {
+      return (-1 * (baseValue * 25)) / 100;
+    } else if (owners === 0) {
+      return (finalValue * 10) / 100;
+    } else {
+      return 0;
+    }
   },
 
   /*
@@ -39,7 +45,7 @@ module.exports = {
    * For every reported collision the car has been in, remove two (2) percent of its value, up to five (5) collisions.
    */
   processCollisionCost: function(collisions, carValue) {
-    return collisions >= 5
+    return collisions > 5
       ? (5 * 2 * carValue) / 100
       : (collisions * 2 * carValue) / 100;
   }
