@@ -33,7 +33,7 @@ After 150,000 miles, it's value cannot be reduced further by miles. Do not consi
 If the car has had more than 2 previous owners, reduce its value by twenty-five (25) percent.
 If the car has had no previous owners, add ten (10) percent to the FINAL car value at the end.
 
-####COLLISIONS:
+#### COLLISIONS:
 
 For every reported collision the car has been in, remove two (2) percent of its value, up to five (5) collisions.
 
