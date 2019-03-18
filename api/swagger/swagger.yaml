@@ -1,0 +1,83 @@
+swagger: '2.0'
+info:
+  description: 'This a REST API to find value of a used car.'
+  version: '1.0.0'
+  title: 'Vehicle Value REST API'
+  license:
+    name: 'Apache 2.0'
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: 'localhost:3000'
+basePath: '/'
+schemes:
+  - 'http'
+paths:
+  /value:
+    get:
+      tags:
+        - 'value'
+      summary: 'Find value of a used car'
+      description: 'Provide query paramerters to get a value of a used car'
+      produces:
+        - 'application/json'
+      parameters:
+        - name: 'make'
+          in: 'query'
+          description: 'Make of the vehicle'
+          required: true
+          type: 'string'
+        - name: 'model'
+          in: 'query'
+          description: 'Model of the vehicle'
+          required: true
+          type: 'string'
+        - name: 'age'
+          in: 'query'
+          description: 'Age of the vehicle in months'
+          required: true
+          type: 'number'
+        - name: 'owners'
+          in: 'query'
+          description: 'Number of the owners of the vehicle'
+          required: true
+          type: 'number'
+        - name: 'mileage'
+          in: 'query'
+          description: 'Mileage of the vehicle'
+          required: false
+          type: 'number'
+        - name: 'collisions'
+          in: 'query'
+          description: 'Number of the collisions of the vehicle'
+          required: false
+          type: 'number'
+      responses:
+        200:
+          description: 'successful operation'
+          schema:
+            type: 'object'
+            items:
+              $ref: '#/definitions/value'
+        400:
+          description: 'Query parameters not provided'
+          schema:
+            type: 'object'
+        401:
+          description: 'Make or model of the vehicle not found'
+          schema:
+            type: 'object'
+definitions:
+  value:
+    type: 'object'
+    properties:
+      Make_Name:
+        type: 'string'
+        example: 'Honda'
+      Model_Name:
+        type: 'string'
+        example: 'Civic'
+      Base_Value:
+        type: 'integer'
+        example: 30000
+      New_Value:
+        type: 'integer'
+        example: 15000
